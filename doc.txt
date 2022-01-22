@@ -1,0 +1,13 @@
+1. pymongo
+2. djongo
+3. motorengine
+
+pymongo
+No model file needed.
+No database support in django settings.
+
+djongo
+Works with django orm queries.
+Retrieves the data in orm like fashion which again needs to be serialized.
+Supports model file (schema like structure) and supports django's migration.
+Database support in django settings. 
