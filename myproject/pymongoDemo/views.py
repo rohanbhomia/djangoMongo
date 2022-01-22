@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from django.http import HttpResponse
 from django.http import JsonResponse
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view,permission_classes
 
 from pymongo import MongoClient
 
@@ -43,3 +44,13 @@ class PymongoView(APIView):
             data = {'status':400,
             'message':'Record not found'}
         return data
+
+
+
+@api_view()
+@permission_classes([IsAuthenticated])
+def get_todo(request):
+    data = list(collection.find({}, {'_id': False}))
+    data = {'data':data}
+    return Response(data)
+    return Response({"message": "Hello, world!"})
